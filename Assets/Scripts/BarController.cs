@@ -56,6 +56,7 @@ public class BarController : MonoBehaviour
     {
         this.downSpeed = downSpeed;
         this.gapPos = gapPos;
+        this.initY = initY;
 
         // 将两个柱子的位置初始化
         leftBar.transform.localPosition = new Vector2(-barLength, 0);

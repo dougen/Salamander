@@ -60,7 +60,7 @@ public class BarSwapScript : MonoBehaviour
     public void SwapBar(float downSpeed, float gapPos, float initY)
     {
         GameObject tempBar = (GameObject)Instantiate(bar, new Vector3(0, initY, 0), Quaternion.identity);
-        tempBar.GetComponent<BarController>().gapPos = gapPos;
+        tempBar.GetComponent<BarController>().Reset(downSpeed, gapPos, initY);
         bars.Add(tempBar);
     }
 
