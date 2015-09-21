@@ -2,7 +2,7 @@
 
 public class PlayerControls : MonoBehaviour 
 {
-    public Vector2 shipInitPos;         // 飞船的初始位置
+    public Vector2 shipInitPos;             // 飞船的初始位置
     public float shipSpeed = 4f;            // 飞船左右移动的速度
 
     public float dashTime = 3f;             // 飞船冲刺到最大距离保持的时间
