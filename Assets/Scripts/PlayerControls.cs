@@ -8,10 +8,11 @@ public class PlayerControls : MonoBehaviour
     public float dashTime = 3f;             // 飞船冲刺到最大距离保持的时间
     public float dashDistance = 3f;         // 飞船最大冲刺距离
     public float dashSpeed = 10f;           // 飞船冲刺速度
-    public float dashCooldown = 5f;         // 冲刺技能CD时间
     public float backSpeed = -3f;           // 冲刺完成后返回的速度，值为负数
 
     public float boardX = 3.5f;             // 飞机的左右移动范围
+    
+    public SpellCoolDown spell;
 
     private Rigidbody2D rig2d = null;
     private float dashTimeCount = 0;          
@@ -62,7 +63,7 @@ public class PlayerControls : MonoBehaviour
         // 2. 停在最大距离一段时间，此时速度为0.
         // 3. 持续时间过后，以-dashSpeed回到原来的初始位置
         // 4. 冲刺技能的CD处理
-        if (Input.GetKeyDown(KeyCode.Space) && rig2d.velocity.y == 0)
+        if (Input.GetKeyDown(KeyCode.Space) && rig2d.velocity.y == 0 && spell.skill.fillAmount == 0)
         {
             speed = new Vector2(speed.x, dashSpeed);
             Debug.Log("开始冲刺");
