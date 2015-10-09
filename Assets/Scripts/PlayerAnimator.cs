@@ -15,9 +15,6 @@ public class PlayerAnimator : MonoBehaviour
 	// Update is called once per frame
 	private void Update () 
     {
-
-#if UNITY_STANDALONE
-
         Vector2 speed = GetComponent<Rigidbody2D>().velocity;
         Sprite sprite = GetComponent<SpriteRenderer>().sprite;
         if (speed.x == 0 && sprite != shipNormal)
@@ -34,9 +31,5 @@ public class PlayerAnimator : MonoBehaviour
         }
 
         GetComponent<SpriteRenderer>().sprite = sprite;
-
-#endif
-
-
 	}
 }

@@ -12,10 +12,11 @@ public class PlayerControls : MonoBehaviour
 
     public float boardX = 3.5f;             // 飞机的左右移动范围
     
-    public SpellCoolDown spell;
+    public SpellCoolDown spell;             // 技能冷却控制
+    public GameObject fire;                 // 控制尾焰的大小
 
     private Rigidbody2D rig2d = null;
-    private float dashTimeCount = 0;          
+    private float dashTimeCount = 0;      
 
 	private void Start () 
     {
@@ -28,7 +29,7 @@ public class PlayerControls : MonoBehaviour
 
 	private void Update () 
     {
-
+// PC平台上的操作
 #if UNITY_STANDALONE
 
         Vector2 speed = rig2d.velocity;
@@ -98,12 +99,9 @@ public class PlayerControls : MonoBehaviour
        
 #endif
 
+// 在安卓平台上的操作处理
 #if UNITY_ANDROID
 
 #endif
-        
-
 	}
-
-
 }

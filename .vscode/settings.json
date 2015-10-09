@@ -1,6 +1,9 @@
 // Place your settings in this file to overwrite default and user settings.
 {
 	"files.exclude": {
+        "**/*.csproj": true,
+        "**/*.sln": true,
+        "**/*.suo": true,
         "**/.git": true,
         "**/.DS_Store": true,
         "**/*.meta": true,
