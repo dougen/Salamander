@@ -13,10 +13,12 @@ public class PlayerControls : MonoBehaviour
     public float boardX = 3.5f;             // 飞机的左右移动范围
     
     public SpellCoolDown spell;             // 技能冷却控制
-    public GameObject fire;                 // 控制尾焰的大小
 
     private Rigidbody2D rig2d = null;
-    private float dashTimeCount = 0;      
+    private float dashTimeCount = 0;
+
+    [HideInInspector]
+    public bool isRushing = false;
 
 	private void Start () 
     {
@@ -67,6 +69,9 @@ public class PlayerControls : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && rig2d.velocity.y == 0 && spell.skill.fillAmount == 0)
         {
             speed = new Vector2(speed.x, dashSpeed);
+
+            isRushing = true;
+
             Debug.Log("开始冲刺");
         }
 
@@ -80,6 +85,9 @@ public class PlayerControls : MonoBehaviour
         {
             speed = new Vector2(speed.x, 0);
             transform.position = new Vector2(transform.position.x, shipInitPos.y);
+
+            isRushing = false;
+
             Debug.Log("冲刺结束");
         }
         // 当飞机已经到达顶部时，开始计时。当时间到达冲刺时间后开始后退恢复原来位置
