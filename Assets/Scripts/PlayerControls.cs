@@ -66,11 +66,13 @@ public class PlayerControls : MonoBehaviour
         // 2. 停在最大距离一段时间，此时速度为0.
         // 3. 持续时间过后，以-dashSpeed回到原来的初始位置
         // 4. 冲刺技能的CD处理
-        if (Input.GetKeyDown(KeyCode.Space) && rig2d.velocity.y == 0 && spell.skill.fillAmount == 0)
+        if (Input.GetKeyDown(KeyCode.Space) && rig2d.velocity.y == 0 && spell.isCD == false)
         {
             speed = new Vector2(speed.x, dashSpeed);
 
             isRushing = true;
+
+            spell.Spell();
 
             Debug.Log("开始冲刺");
         }

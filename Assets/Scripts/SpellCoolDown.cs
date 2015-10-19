@@ -8,6 +8,9 @@ public class SpellCoolDown : MonoBehaviour
     public Text num;
     public Image skill;
 
+    [HideInInspector]
+    public bool isCD = false;     // 默认技能无CD
+
 	// Use this for initialization
 	private void Start () 
     {
@@ -21,12 +24,6 @@ public class SpellCoolDown : MonoBehaviour
 	// Update is called once per frame
 	private void Update () 
     {
-        // 按下空格键开始进入冷却状态
-	    if (Input.GetKeyDown(KeyCode.Space) && skill.fillAmount <= 0)
-        {
-            skill.fillAmount = 1f;
-        }
-
         // 当开始计时时，显示CD剩余时间
         if (skill.fillAmount <= 1f && skill.fillAmount > 0)
         {
@@ -35,8 +32,18 @@ public class SpellCoolDown : MonoBehaviour
             num.text = Mathf.CeilToInt(skill.fillAmount * timer).ToString();
             if (num.text == "0")
             {
-                num.enabled = false;
+                num.enabled = false;        // CD数字消失
+                isCD = false;               // CD时间结束
             }
         }
 	}
+
+    public void Spell()
+    {
+        if (isCD == false)
+        {
+            skill.fillAmount = 1f;
+            isCD = true;
+        }
+    }
 }
