@@ -2,17 +2,20 @@
 
 public class PlayerManager : MonoBehaviour 
 {
+    public GameObject fire;
+
+    private Animator animator;
 
 	// Use this for initialization
 	private void Start () 
     {
-	
+        animator = fire.GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
 	private void Update () 
     {
-	
+	    
 	}
 
     // 碰撞检测函数，当检测到碰撞体为柱子时，游戏结束
@@ -20,7 +23,23 @@ public class PlayerManager : MonoBehaviour
     {
         if (collider.tag == "Bars")
         {
-            Debug.Log("Game Over");
+            GameOver();
         }
+    }
+
+    private void GameOver()
+    {
+        // 碰撞时播放爆炸特效
+        animator.SetTrigger("Explosion");
+
+        // 将飞船取消显示
+        GetComponent<SpriteRenderer>().enabled = false;
+
+        // 设置碰撞组件失效，防止继续碰撞
+        GetComponent<BoxCollider2D>().enabled = false;
+
+        // 设置停止移动
+        GetComponent<PlayerControls>().enabled = false;
+        Debug.Log("Game Over");
     }
 }

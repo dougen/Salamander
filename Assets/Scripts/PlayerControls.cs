@@ -87,9 +87,7 @@ public class PlayerControls : MonoBehaviour
         {
             speed = new Vector2(speed.x, 0);
             transform.position = new Vector2(transform.position.x, shipInitPos.y);
-
             isRushing = false;
-
             Debug.Log("冲刺结束");
         }
         // 当飞机已经到达顶部时，开始计时。当时间到达冲刺时间后开始后退恢复原来位置
