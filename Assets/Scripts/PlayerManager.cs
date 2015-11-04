@@ -5,11 +5,13 @@ public class PlayerManager : MonoBehaviour
     public GameObject fire;
 
     private Animator animator;
+    private Rigidbody2D rigid2d;
 
 	// Use this for initialization
 	private void Start () 
     {
         animator = fire.GetComponent<Animator>();
+        rigid2d = GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
@@ -40,6 +42,7 @@ public class PlayerManager : MonoBehaviour
 
         // 设置停止移动
         GetComponent<PlayerControls>().enabled = false;
+        rigid2d.velocity = new Vector2(0, 0);
         Debug.Log("Game Over");
     }
 }
